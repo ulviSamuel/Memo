@@ -24,6 +24,6 @@
                 }
             }
         ?>
-        <button id="floating_button">+</button>
+        <a href="new_note.html"><button id="floating_button">+</button></a>
     </body>
 </html>

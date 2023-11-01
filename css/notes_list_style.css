@@ -20,6 +20,12 @@ body
     margin-bottom: 1%;
     border-radius: 10px;
     padding: 1%;
+    transition: transform 0.3s;
+}
+
+.tile:hover
+{
+    transform: scale(0.98);
 }
 
 .tile_title
@@ -35,7 +41,6 @@ body
 
 #floating_button
 {
-    
     position: fixed;
     bottom: 3%;
     right: 3%;
@@ -47,4 +52,10 @@ body
     background:#E4AF0A;
     font-size:200%;
     font-weight:bold;
+    transition: transform 0.3s;
+}
+
+#floating_button:hover
+{
+    transform: scale(0.95);
 }

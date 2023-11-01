@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/new_note_style.css">
+        <meta charset="ISO-8859-1">
+    </head>
+
+    <body>
+        <a href="notes_list.php" id="back_link">
+            <img id="back_link_icon" src="icons/icons8-back-50.png" alt="Back Icon">
+            <span class="back_link_text">All Notes</span>
+        </a>
+
+        <form action="">
+            <input type="submit" name="done" value="Done">
+            <textarea placeholder="Title" name="title" id="title"></textarea>
+            <textarea placeholder="Enter text" name="text" id="text"></textarea>
+        </form>
+        
+        <script>
+            //questo codice l'ho preso da internet
+            const titleArea = document.getElementById('title');
+
+            titleArea.addEventListener('input', function(){
+                titleArea.style.height = 'auto';
+                titleArea.style.height = (this.scrollHeight) + 'px';
+            });
+
+            titleArea.addEventListener('keydown', function(e){
+                if(e.key == 'Enter')
+                {
+                    setTimeout(() => {
+                        titleArea.style.height = 'auto';
+                        titleArea.style.height = (this.scrollHeight) + 'px';
+                    }, 0);
+                }
+            });
+        </script>
+
+        <script>
+            // Questo codice l'ho preso da internet
+            const textArea = document.getElementById('text');
+            
+            textArea.addEventListener('input', function () {
+                this.style.height = 'auto';
+                this.style.height = (this.scrollHeight) + 'px';
+            });
+        
+            textArea.addEventListener('keydown', function (e) {
+                if (e.key == 'Enter') {
+                    setTimeout(() => {
+                        this.style.height = 'auto';
+                        this.style.height = (this.scrollHeight) + 'px';
+                    }, 0);
+                }
+            });
+        </script>
+    </body>
+</html>
