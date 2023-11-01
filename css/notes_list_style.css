@@ -35,7 +35,16 @@ body
 
 #floating_button
 {
-    background-color: #E4AF0A;
-    color: white;
-    border-radius: 100%;
+    
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+    width:80px;
+    height:80px;
+    border: none;
+    border-radius: 50%;
+    color:#f5f5f5;
+    background:#E4AF0A;
+    font-size:200%;
+    font-weight:bold;
 }
