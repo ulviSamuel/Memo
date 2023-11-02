@@ -20,18 +20,54 @@
                     $title = $row['titolo'];
                     $text  = $row['testo'];
                     $data  = $row['datains'];
-                    echo "<a id='tile_link' href='show_note.php?title=$title&text=$text'";
+                    echo "<a id='tile_link' href='javascript:void(0);' onclick='submitForm(\"$title\", \"$text\");'>";
                     echo "<h2 class='tile_title'>$title</h2>";
                     if(strlen($text) < 20)
-                        echo "<p class='tile_text_piece'>$text</p>";
+                    {
+                        $textArray = explode("<br />", $text);
+                        $textArray = array_map('trim', $textArray);
+                        if(count($textArray) > 1)
+                        {
+                            if(strlen($textArray[0]) < 20)
+                                echo "<p class='tile_text_piece'>".$textArray[0]."...</p>";
+                            else
+                                echo "<p class='tile_text_piece'>".substr($textArray[0], 0, 20)."...</p>";
+                        }
+                        else
+                            echo "<p class='tile_text_piece'>$text</p>";
+                    }
                     else
-                        echo "<p class='tile_text_piece'>".substr($text, 0, 20)."...</p>";
+                    {
+                        $textArray = explode("<br />", $text);
+                        $textArray = array_map('trim', $textArray);
+                        if(count($textArray) > 1)
+                        {
+                            if(strlen($textArray[0]) < 20)
+                                echo "<p class='tile_text_piece'>$textArray[0]...</p>";
+                            else
+                                echo "<p class='tile_text_piece'>".substr($textArray[0], 0, 20)."...</p>";
+                        }
+                        else
+                            echo "<p class='tile_text_piece'>".substr($text, 0, 20)."...</p>";
+                    }
                     echo "<span class='data'>$data</span>";
                     echo "</a>";
                     echo "</div>";
                 }
             }
         ?>
+        <form id="hidden_form" action="show_note.php" method="post">
+            <input type="hidden" name="title" id="hidden_title">
+            <input type="hidden" name="text" id="hidden_text">
+        </form>
+
+        <script>
+            function submitForm(title, text) {
+                document.getElementById("hidden_title").value = title;
+                document.getElementById("hidden_text").value = text;
+                document.getElementById("hidden_form").submit();
+            }
+        </script>
         <a href="new_note.html"><button id="floating_button">+</button></a>
     </body>
 </html>

@@ -12,8 +12,8 @@
             </a>
 
         <?php
-            $title = $_GET['title'];
-            $text  = $_GET['text'];
+            $title = $_POST['title'];
+            $text  = $_POST['text'];
             echo "<h1 id='title'>$title</h1>";
             echo "<p id='text'>$text</p>";
         ?>
