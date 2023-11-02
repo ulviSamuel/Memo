@@ -2,6 +2,7 @@
     <head>
         <link rel="stylesheet" href="css/index_style.css">
         <meta charset="ISO-8859-1">
+        <?php session_start(); ?>
     </head>
 
     <body>
@@ -26,6 +27,8 @@
                     $res = mysqli_query($con, $sql);
                     if(mysqli_num_rows($res) == 1)
                     {
+                        $row = mysqli_fetch_assoc($res);
+                        $_SESSION['idUser'] = $row['id'];
                         header("Location: notes_list.php");
                         mysqli_close($con);
                         exit;
