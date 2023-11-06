@@ -2,6 +2,7 @@
     <head>
         <link rel="stylesheet" href="css/show_note_style.css">
         <meta charset="ISO-8859-1">
+        <?php session_start(); ?>
     </head>
 
     <body>
@@ -13,8 +14,9 @@
 
         <?php
             $idNota = $_GET['idNota'];
-            $con = mysqli_connect("192.168.107.149","root", "", "memo2");
-            $sql = "SELECT titolo, testo FROM tmemo tm WHERE tm.id = $idNota";
+            require_once("variabili_conn.php");
+            $idUser = $_SESSION['idUser'];
+            $sql = "SELECT titolo, testo FROM tmemo tm WHERE tm.idUser = $idUser AND tm.id = $idNota";
             $res = mysqli_query($con, $sql);
             if(mysqli_num_rows($res) == 1)
             {

@@ -18,16 +18,16 @@
                         $text = "No text here";
                         if($title == "")
                             $title = "No Title";
-                        $com = mysqli_connect("192.168.107.149", "root", "", "memo2");
+                        require_once("variabili_conn.php");
                         $idUser = $_SESSION['idUser'];
                         $data   = date("Y-m-d");
-                        $idUser = mysqli_real_escape_string($com, $idUser);
-                        $title = mysqli_real_escape_string($com, $title);
-                        $text = mysqli_real_escape_string($com, $text);
-                        $data = mysqli_real_escape_string($com, $data);
+                        $idUser = mysqli_real_escape_string($con, $idUser);
+                        $title = mysqli_real_escape_string($con, $title);
+                        $text = mysqli_real_escape_string($con, $text);
+                        $data = mysqli_real_escape_string($con, $data);
                         $sql = "INSERT INTO tmemo (idUser, titolo, testo, datains) VALUES ('$idUser', '$title', '$text', '$data')";
-                        mysqli_query($com, $sql);
-                        mysqli_close($com);
+                        mysqli_query($con, $sql);
+                        mysqli_close($con);
                     }
                     header("Location: notes_list.php");
                     exit;

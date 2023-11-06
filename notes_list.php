@@ -8,7 +8,7 @@
     <body>
         <h1 id="title">Note</h1>
         <?php
-            $con    = mysqli_connect("192.168.107.149", "root", "", "memo2");
+            require_once("variabili_conn.php");
             $idUser = $_SESSION['idUser'];
             $sql    = "SELECT * FROM tmemo tm WHERE (tm.titolo != '' OR tm.testo != '') AND tm.idUser = $idUser ORDER BY titolo ASC, testo ASC";
             $res    = mysqli_query($con, $sql);
