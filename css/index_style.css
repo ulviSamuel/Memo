@@ -38,6 +38,12 @@ body
     border: none;
     outline: none;
     margin-bottom: 1%;
+    transition: transform 0.3s;
+}
+
+#login_btn:hover
+{
+    transform: scale(0.95);
 }
 
 #no_log_text
