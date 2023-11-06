@@ -18,7 +18,7 @@
                         $text = "No text here";
                         if($title == "")
                             $title = "No Title";
-                        $com = mysqli_connect("localhost", "root", "", "memo2");
+                        $com = mysqli_connect("192.168.107.149", "root", "", "memo2");
                         $idUser = $_SESSION['idUser'];
                         $data   = date("Y-m-d");
                         $idUser = mysqli_real_escape_string($com, $idUser);

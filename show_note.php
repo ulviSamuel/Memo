@@ -12,10 +12,18 @@
             </a>
 
         <?php
-            $title = $_POST['title'];
-            $text  = $_POST['text'];
-            echo "<h1 id='title'>$title</h1>";
-            echo "<p id='text'>$text</p>";
+            $idNota = $_GET['idNota'];
+            $con = mysqli_connect("192.168.107.149","root", "", "memo2");
+            $sql = "SELECT titolo, testo FROM tmemo tm WHERE tm.id = $idNota";
+            $res = mysqli_query($con, $sql);
+            if(mysqli_num_rows($res) == 1)
+            {
+                $row = mysqli_fetch_assoc($res);
+                $title = $row['titolo'];
+                $text  = $row['testo'];
+                echo "<h1 id='title'>$title</h1>";
+                echo "<p id='text'>$text</p>";
+            }
         ?>
         </div>
     </body>

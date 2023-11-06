@@ -22,7 +22,7 @@
                 if(isset($_POST['password']))
                 {
                     $password = $_POST['password'];
-                    $con = mysqli_connect("localhost", "root", "", "memo2");
+                    $con = mysqli_connect("192.168.107.149", "root", "", "memo2");
                     $sql = "SELECT * FROM tLogin tl WHERE tl.username = '".$username."' AND tl.password = '".$password."'";
                     $res = mysqli_query($con, $sql);
                     if(mysqli_num_rows($res) == 1)
