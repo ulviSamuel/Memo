@@ -19,14 +19,11 @@
         </div>
         
         <script>
-            //questo codice l'ho preso da internet
             const titleArea = document.getElementById('title');
-
             titleArea.addEventListener('input', function(){
                 titleArea.style.height = 'auto';
                 titleArea.style.height = (this.scrollHeight) + 'px';
             });
-
             titleArea.addEventListener('keydown', function(e){
                 if(e.key == 'Enter')
                 {
@@ -39,14 +36,11 @@
         </script>
 
         <script>
-            // Questo codice l'ho preso da internet
             const textArea = document.getElementById('text');
-            
             textArea.addEventListener('input', function () {
                 this.style.height = 'auto';
                 this.style.height = (this.scrollHeight) + 'px';
             });
-        
             textArea.addEventListener('keydown', function (e) {
                 if (e.key == 'Enter') {
                     setTimeout(() => {
