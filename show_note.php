@@ -1,7 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="css/show_note_style.css">
-        <meta charset="ISO-8859-1">
+        <meta charset="UTF-8">
         <?php session_start(); ?>
     </head>
 

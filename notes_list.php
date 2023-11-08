@@ -1,7 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="css/notes_list_style.css">
-        <meta charset="ISO-8859-1">
+        <meta charset="UTF-8">
         <?php session_start(); ?>
     </head>
 
@@ -20,7 +20,7 @@
                     $idNota = $row['id'];
                     $title  = $row['titolo'];
                     $text   = $row['testo'];
-                    $data   = $row['datains'];
+                    $data   = date("d-m-Y", strtotime($row['datains']));
                     echo "<a id='tile_link' href='show_note.php?idNota=$idNota'>";
                     echo "<h2 class='tile_title'>$title</h2>";
                     if(strlen($text) < 20)

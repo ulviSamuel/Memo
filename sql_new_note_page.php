@@ -1,7 +1,7 @@
 <html>
     <head>
         <?php session_start(); ?>
-        <meta charset="ISO-8859-1">
+        <meta charset="UTF-8">
     </head>
 
     <body>
@@ -21,10 +21,10 @@
                         require_once("variabili_conn.php");
                         $idUser = $_SESSION['idUser'];
                         $data   = date("Y-m-d");
+                        echo $data;
                         $idUser = mysqli_real_escape_string($con, $idUser);
                         $title = mysqli_real_escape_string($con, $title);
                         $text = mysqli_real_escape_string($con, $text);
-                        $data = mysqli_real_escape_string($con, $data);
                         $sql = "INSERT INTO tmemo (idUser, titolo, testo, datains) VALUES ('$idUser', '$title', '$text', '$data')";
                         mysqli_query($con, $sql);
                         mysqli_close($con);

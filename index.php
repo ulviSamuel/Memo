@@ -1,7 +1,7 @@
 <html>
     <head>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="css/index_style.css">
-        <meta charset="ISO-8859-1">
         <?php session_start(); ?>
     </head>
 

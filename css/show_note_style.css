@@ -39,12 +39,20 @@ body
     text-decoration: none;
     display: flex;
     align-items: center;
+    width: fit-content;
+    padding-left: 1rem;
+    transition: padding-left .35s;
+}
+
+#back_link:hover
+{
+    padding-left: 1.25rem;
 }
 
 #back_link_icon
 {
-    width: 3%;
-    height: 3%;
+    width: 4vw;
+    height: 4vw;
 }
 
 #container
