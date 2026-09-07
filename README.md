@@ -1,148 +1,77 @@
 # Memo
 
-![PHP](https://img.shields.io/badge/PHP-Web%20Application-777BB4)
-![Frontend](https://img.shields.io/badge/Frontend-HTML%20%2F%20CSS-blue)
-![Stato](https://img.shields.io/badge/Stato-Progetto%20scolastico-orange)
-![Categoria](https://img.shields.io/badge/Categoria-Organizzazione%20Memo-green)
+Memo is a server-rendered PHP web application for signing in and creating, browsing, and reading personal notes stored in a MySQL database.
 
-**Memo** è un progetto scolastico sviluppato come applicazione web in **PHP**, **HTML** e **CSS**, pensato per gestire promemoria e note in modo semplice e immediato.
+[![PHP](https://img.shields.io/badge/PHP-server--rendered-777BB4?style=flat&logo=php&logoColor=white)](https://www.php.net/)
+![Web Application](https://img.shields.io/badge/Category-Web%20Application-2F80ED?style=flat)
+![UI](https://img.shields.io/badge/UI-HTML%20%2B%20CSS%20%2B%20JavaScript-E34F26?style=flat)
+![Year | 2023](https://img.shields.io/badge/Year%20%7C%202023-555555?style=flat)
 
-Il progetto è stato realizzato con finalità didattiche per esercitarsi su sviluppo web lato server, gestione di form e organizzazione dell’interfaccia utente.
+## Overview
 
----
+Memo uses PHP pages and MySQL queries to provide a small note-taking workflow:
 
-## Indice
+- users sign in with a username and password;
+- authenticated users see their non-empty notes ordered by title and text;
+- users can open an individual note;
+- users can submit a title and text to create a note;
+- note creation records the insertion date and supplies fallback text when a submitted note has one blank field.
 
-- [Descrizione](#descrizione)
-- [Funzionalità](#funzionalità)
-- [Tecnologie utilizzate](#tecnologie-utilizzate)
-- [Struttura del progetto](#struttura-del-progetto)
-- [Architettura logica](#architettura-logica)
-- [Esecuzione del progetto](#esecuzione-del-progetto)
-- [Obiettivi didattici](#obiettivi-didattici)
-- [Possibili miglioramenti futuri](#possibili-miglioramenti-futuri)
-- [Autore](#autore)
-- [Licenza](#licenza)
+The application is implemented as a collection of PHP and HTML entry points with shared CSS files. Database access is centralized through `variabili_conn.php`, while session state identifies the current user across the note pages.
 
----
+## Technology Stack
 
-## Descrizione
+- **Language and runtime:** PHP
+- **Database access:** MySQL through PHP's `mysqli` extension
+- **Frontend:** HTML, CSS, and browser JavaScript
+- **Session handling:** PHP sessions
+- **Database tables used by the application:** `tLogin` and `tmemo`
 
-L’obiettivo del progetto è offrire un sistema web per la gestione di memo/promemoria.
-
-L’applicazione consente di inserire, visualizzare e organizzare note attraverso un’interfaccia semplice, con logica backend in PHP e presentazione frontend in HTML/CSS.
-
----
-
-## Funzionalità
-
-Il progetto include funzionalità tipiche di una web app didattica per memo:
-
-- inserimento di nuovi promemoria;
-- visualizzazione elenco memo;
-- gestione dei contenuti tramite form;
-- interfaccia ordinata e leggibile;
-- separazione tra logica server e presentazione.
-
-> In base all’implementazione presente nel repository, possono essere disponibili anche funzioni aggiuntive (modifica, eliminazione, filtri, ecc.).
-
----
-
-## Tecnologie utilizzate
-
-- **PHP** (`49.3%`)
-- **CSS** (`36.4%`)
-- **HTML** (`14.3%`)
-
----
-
-## Struttura del progetto
-
-La struttura reale può variare in base all’organizzazione delle cartelle. In generale:
+## Project Structure
 
 ```text
-Memo/
-│
-├── index.php
-├── ... file PHP (logica applicativa)
-├── ... file HTML (struttura pagine)
-├── ... file CSS (stile interfaccia)
-│
-└── README.md
+.
+├── index.php                 # Sign-in page and authentication query
+├── notes_list.php            # Current user's note list
+├── new_note.html             # New-note form
+├── sql_new_note_page.php     # Note insertion handler
+├── show_note.php             # Individual note view
+├── variabili_conn.php        # Shared MySQL connection
+├── css/                      # Page-specific stylesheets
+└── icons/                    # Interface image assets
 ```
 
-> Se vuoi, posso anche prepararti la struttura precisa file-per-file in stile documentazione tecnica.
+## Getting Started
 
----
+### Prerequisites
 
-## Architettura logica
+- A PHP installation with the `mysqli` extension enabled.
+- A MySQL-compatible database containing the `tLogin` and `tmemo` tables expected by the SQL queries.
+- A web server capable of executing PHP, such as PHP's built-in development server.
 
-Il progetto segue una separazione tipica delle applicazioni web semplici:
+The repository does not include a database schema, dependency manifest, or environment configuration template. Before running the application, configure the connection used by `variabili_conn.php` for the database available in your environment. Do not commit credentials to the repository.
 
-- **livello presentazione**: pagine HTML e stile CSS;
-- **livello logico**: script PHP per gestione richieste e dati;
-- **livello input utente**: form per inserimento e interazione con i memo.
+### Run locally
 
-Questa struttura rende il progetto più chiaro e facilmente estendibile.
-
----
-
-## Esecuzione del progetto
-
-Per eseguire il progetto in locale puoi usare:
-
-- **XAMPP**
-- **MAMP**
-- **WAMP**
-- server PHP integrato da terminale
-
-### Avvio rapido (server PHP integrato)
-
-Dalla cartella del progetto:
+From the repository root, start PHP's built-in development server:
 
 ```bash
 php -S localhost:8000
 ```
 
-Poi apri nel browser:
+Then open [http://localhost:8000/index.php](http://localhost:8000/index.php) in a browser. The sign-in form is the application entry point; successful authentication redirects to `notes_list.php`.
 
-```text
-http://localhost:8000
-```
+## Testing and Build
 
-> Se il progetto richiede una cartella specifica (es. `public/`), avvia il server da quella directory.
+No automated tests, build scripts, package manifests, or continuous-integration workflows are included in this repository. Verification is therefore limited to running the PHP application against a configured database.
 
----
+## Implementation Notes
 
-## Obiettivi didattici
+- Authentication state is stored in the PHP session as `idUser`.
+- Note list and note detail queries restrict results to the signed-in user's ID.
+- The note list displays a short text preview and the stored insertion date.
+- The new-note form uses browser JavaScript to expand its title and text areas as content is entered.
 
-Questo repository contiene un **progetto scolastico** sviluppato per esercitarsi su:
+## License
 
-- sviluppo web con PHP;
-- gestione di form e richieste HTTP;
-- separazione tra contenuto e stile (HTML/CSS);
-- organizzazione di un piccolo progetto full-stack base;
-- documentazione professionale su GitHub.
-
----
-
-## Possibili miglioramenti futuri
-
-- aggiunta autenticazione utente;
-- modifica/eliminazione memo;
-- filtri per categoria o data;
-- persistenza su database (MySQL);
-- miglioramento UI responsive;
-- validazione avanzata lato server e lato client.
-
----
-
-## Autore
-
-Progetto realizzato da **[ulviSamuel](https://github.com/ulviSamuel)**.
-
----
-
-## Licenza
-
-Questo progetto è stato sviluppato per scopi scolastici e didattici.
+No license file or explicit license declaration is present in the repository.
