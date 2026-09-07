@@ -74,4 +74,4 @@ No automated tests, build scripts, package manifests, or continuous-integration 
 
 ## License
 
-No license file or explicit license declaration is present in the repository.
+This project is shared for educational and portfolio purposes. All rights reserved unless otherwise stated.
